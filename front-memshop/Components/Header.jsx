@@ -4,6 +4,8 @@ import Link from "next/link";
 import Menu from "./Menu";
 import { BsCart } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { BiMenuAltRight } from "react-icons/bi";
+import {VscChromeClose} from "react-icons/vsc"
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatmenu, setshowCatmenu] = useState(false);
@@ -54,6 +56,21 @@ const Header = () => {
           </div>
         </div>
         {/* ---------------------------Icon End------------------------------------ */}
+        {/* ---------------------------Mobile Icon Start------------------------------------ */}
+        <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative -mr-2">
+          {mobileMenu ? (
+            <VscChromeClose
+              className="rext-[16px]"
+              onClick={() => setMobileMenu(false)}
+            />
+          ) : (
+            <BiMenuAltRight
+              className="text-[20px]"
+              onClick={() => setMobileMenu(true)}
+            />
+          )}
+        </div>
+        {/* ---------------------------Mobile Icon End------------------------------------ */}
       </Wrapper>
     </header>
   );
