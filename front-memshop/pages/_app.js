@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
+
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -13,6 +14,7 @@ export default function App({ Component, pageProps }) {
               ;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet"
       ></link>
+
       <Header/>
       <Component {...pageProps} />
       <Footer/>
