@@ -2,15 +2,45 @@ import React, { useState, useEffect } from "react";
 import Wrapper from "./Wrapper";
 import Link from "next/link";
 import Menu from "./Menu";
+import MenuMobile from "./MenuMobile";
 import { BsCart } from "react-icons/bs";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BiMenuAltRight } from "react-icons/bi";
-import {VscChromeClose} from "react-icons/vsc"
+import { VscChromeClose } from "react-icons/vsc"
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatmenu, setshowCatmenu] = useState(false);
   const [show, setShow] = useState("translate-Y-0");
   const [lastScrollY, setlastScrollY] = useState(0);
+
+
+  const controlNvabar =() => {
+   if(window.scrollY>200){
+    if(window.scrollY > lastScrollY){
+      setShow("-translate-y-[80px]");
+   } else {
+      setShow("shadow-sm")
+    } 
+  }
+    else {
+      setShow("translate-y-0")
+    }
+    setlastScrollY(Window.scrollY)
+
+  };
+  useEffect (()=>{
+    window.addEventListener ("scroll", controlNvabar);
+    return()=>{
+      window.removeEventListener("scroll", controlNvabar)
+    }
+  },
+  [lastScrollY]
+)
+
+
+
+
+
   return (
     <header
       className={`w-full h-[50px] md:h-[80px] bg-white flex items-center 
@@ -20,7 +50,21 @@ const Header = () => {
         <Link href="/">
           <img src="/logo.svg" className="w-[40px] md:w-[60px]" />
         </Link>
-        <Menu showCatmenu={showCatmenu} setshowCatmenu={setshowCatmenu} />
+
+
+        <Menu
+          showCatmenu={showCatmenu}
+          setshowCatmenu={setshowCatmenu}
+        />
+        {mobileMenu && (
+          <MenuMobile
+            showCatmenu={showCatmenu}
+            setshowCatmenu={setshowCatmenu}
+            setMobileMenu={setMobileMenu}
+          />
+        )}
+
+
         {/* ---------------------------Icon Start------------------------------------ */}
         <div className="flex items-center gap-2 text-black">
           <div
@@ -71,7 +115,7 @@ const Header = () => {
           )}
         </div>
         {/* ---------------------------Mobile Icon End------------------------------------ */}
-     
+
       </Wrapper>
     </header>
   );

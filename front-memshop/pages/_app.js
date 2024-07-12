@@ -16,10 +16,10 @@ export default function App({ Component, pageProps }) {
         rel="stylesheet"
       ></link>
 
-      {/* <Header/>
+      <Header/>
       <Component {...pageProps} />
-      <Footer/> */}
-      <Contact/>
+      <Footer/>
+      {/* <Contact/> */}
     </>
   );
 }
