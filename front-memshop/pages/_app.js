@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
 
+import Contact from "@/Components/Contact";
 export default function App({ Component, pageProps }) {
   return (
     <>
@@ -15,9 +16,10 @@ export default function App({ Component, pageProps }) {
         rel="stylesheet"
       ></link>
 
-      <Header/>
+      {/* <Header/>
       <Component {...pageProps} />
-      <Footer/>
+      <Footer/> */}
+      <Contact/>
     </>
   );
 }
