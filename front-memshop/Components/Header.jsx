@@ -16,7 +16,7 @@ const Header = () => {
 
   const controlNvabar =() => {
    if(window.scrollY>200){
-    if(window.scrollY > lastScrollY){
+    if(window.scrollY > lastScrollY && !mobileMenu){
       setShow("-translate-y-[80px]");
    } else {
       setShow("shadow-sm")
